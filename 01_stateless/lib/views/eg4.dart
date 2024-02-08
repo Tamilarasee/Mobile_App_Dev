@@ -17,6 +17,7 @@ class App4 extends StatelessWidget {
             children: [
               DescendantWidget('surname'),
               DescendantWidget('homeworld'),
+              // when parent attribute value changes, the descendent changes -  in sync with parent all the time
             ]
           ),
         )

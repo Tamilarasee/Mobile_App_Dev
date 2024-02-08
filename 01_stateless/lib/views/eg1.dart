@@ -12,10 +12,13 @@ class App1 extends StatelessWidget {
   Widget build(BuildContext context) {  // `context` is my location in the tree
     // construct and return a widget tree
     // (try to navigate the tree in the widget inspector)
+    // Build method is called upon a widget instance , which creates a widget tree
+    // Buildcontext referes to the elements which is sort of creating a element and keeping before hand which is then passed on later
     return const Center(
       child: Text(
-        'Hello world!', // try changing this and hot-reloading
-        textDirection: TextDirection.ltr, // what happens if we remove this?
+        'Hello World!', // try changing this and hot-reloading 
+        // Hot reload means when there is no change to the main function, but there is a change in other files, we can see the output just by saving it. need not rerun the code.
+        textDirection: TextDirection.ltr, // what happens if we remove this? - it needs a directions-else exception
       )
     );
   }      

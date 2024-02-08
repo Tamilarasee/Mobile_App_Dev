@@ -19,3 +19,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/  
+    # copies the docs from images to the deployment environment/space

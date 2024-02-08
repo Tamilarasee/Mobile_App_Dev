@@ -135,7 +135,10 @@ class Foo {
 
 // hashcode fn should align with equality 
 // hashcode - store the objects of the maps(hashtable) - unformly distributes where the object sits
-
+// The hash code is an integer value that represents the identity of the object.
+// It's common for classes to override the default implementation of hashCode to provide a more meaningful hash code based on the object's content.
+// When you override ==, it's recommended to override hashCode as well to maintain consistency.
+// Here it is done by using x,y
   int get hashCode => x.hashCode ^ y.hashCode;
 
 }

@@ -50,7 +50,10 @@ class App6 extends StatelessWidget {
       appBar: AppBar(
         title: const Text('My Favorite Things'),
       ),
+      
       body: Column(
+        // main axis helps to arrange the body contents according to specs, if not given takes default as per column widget
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -61,6 +64,7 @@ class App6 extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: foods.map((item) => FavoriteWidget(item: item)).toList(),
+            // this a row of widgets. map ->take in a function and returns a widget
           ),
           const SizedBox(height: 30),
           Text(
@@ -69,7 +73,7 @@ class App6 extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,          
             children: languages.map((item) => FavoriteWidget(item: item)).toList(),
           ),
         ],
@@ -104,14 +108,17 @@ class FavoriteWidget extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
+            // the image widget has an asset constructor(default) which takes in th edimensions and req. specs
             child: Image.asset(
               item.imagePath,
               width: 100,
               height: 100,
             ),
             onTap: () => _showSnackBar(context, item.description)
+            // provides a pop up at the bottom of  the page with text/description
           ),
           const SizedBox(height: 8),
+          // sizedbox - used for spacing between the widgets vertically
           Text(
             item.name,
             style: Theme.of(context).textTheme.titleLarge,

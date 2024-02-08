@@ -12,6 +12,7 @@ class App5 extends StatelessWidget {
         title: const Text('App4'),
       ),
       floatingActionButton: FloatingActionButton(
+        // the add icon
         child: const Icon(Icons.add),
         onPressed: () {
           print('Add button clicked');
@@ -19,13 +20,24 @@ class App5 extends StatelessWidget {
       ),
       body: ListView(
         // can you add the tiles 'Lions', 'Tigers', 'Bears', and 'Oh my!'?
-        children: [
-          ListTile(
-            title: Text('Hello World!'),
-            onTap: () => print('"Hello World!" clicked'),
+        // This gives the scrollable container
+        // children: ['Lions', 'Tigers', 'Bears'].map((animal){
+        //   return ListTile(
+        //     title: Text(animal),
+        //     onTap: () => print("You tapped $animal"),
+        //   );
+        // }).toList(),
+        children:List.generate(10, (index) => ListTile(
+          title: Text('Item $index'),
+          subtitle: Text('subtitle $index'),
+          leading: const Icon(Icons.star),
+          trailing: const Icon(Icons.more_vert),
+          onTap: () => print("Item $index tapped"),
+        ))
+          
           ),
-        ]
-      ),
-    );
+        
+      );
+    
   }
 }
