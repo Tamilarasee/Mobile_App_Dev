@@ -14,8 +14,12 @@ class App3 extends StatefulWidget {
 
 class _App3State extends State<App3> {
   final List<int> _counters = [0, 0, 0];
+  // we take it in list, so, it is easier to sum up later
+  // it is final because, we only change the elements , the list shall not be changed 
 
   void _incrementCounter(int index, int inc) {
+    // The set state function would call the entire Widget build (below) to recreate the whole widget tree
+    // This can be avoided by using Model methods shown in eg-4 to rebuild only a subtree of the widget tree using the smaller builder function inside the Widget build
     setState(() {
       _counters[index] += inc;
     });

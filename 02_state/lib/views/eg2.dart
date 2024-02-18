@@ -12,12 +12,17 @@ class App2 extends StatefulWidget {
   State<App2> createState() => _App2State();
 }
 
+// keep the logics of the code in state object as that is what would be changing and keep as much as child stateless objects,
+// so, you ony rebuild whatever changes--keeping it minimal
+
 class _App2State extends State<App2> {
   int _counter = 0;
 
   void _incrementCounter(int inc) {
+    // The set state function would call the entire Widget build (below) to recreate the whole widget tree
     setState(() {
       _counter += inc;
+
     });
   }
 
@@ -32,7 +37,7 @@ class _App2State extends State<App2> {
           children: [
             Incrementer(
               label: '+1', 
-              onPressed: () => _incrementCounter(1)
+              onPressed: () => _incrementCounter(1) //these could have been written directly in Incrementer, passing in labels
             ),
             Incrementer(
               label: '+2', 

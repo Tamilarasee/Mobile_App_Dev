@@ -29,7 +29,7 @@ class App1 extends StatelessWidget {
 // relationship between the widget, its element, and its state object.
 class IncrementableCounter extends StatefulWidget {
   final int increment;
-
+// this is final, becoause, the value by which we increment is going to be fixed for that instance
   const IncrementableCounter({required this.increment, super.key});
 
   @override

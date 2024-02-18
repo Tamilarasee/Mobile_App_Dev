@@ -61,13 +61,17 @@ class _App5State extends State<App5> {
 }
 
 
+// In complex scenarios, the model may have to be accessed by multiple classess,-->there are a couple of methods to
+// achieve this . One such easier way is making it global , but there are many issues with it (it becomes available to classes that may not need as well and if it goes wrong, it affects a lot, conflict by concurrent access(high coupling))
+
 class CountersModel with ChangeNotifier {
   final Map<int,int> _counts = {};
-
+// Map used to create as many counters as you need on the flow
   int get sum => _counts.values.sum;
   
   int getCount(int index) {
     return _counts[index] ?? 0;
+    // get the existing count if the key is already there or return zero if there is no such value and create a new key/value entry
   }
 
   void increment(int index, int inc) {
@@ -80,6 +84,7 @@ class CountersModel with ChangeNotifier {
 class Incrementer extends StatelessWidget {
   final String? label;
   final VoidCallback? onPressed;
+  // void callback takes no arguements and returns nothing --->usage -execute some code when a certain action occurs.
 
   const Incrementer({this.label, this.onPressed, super.key});
 

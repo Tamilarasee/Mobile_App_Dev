@@ -13,6 +13,11 @@ class App4 extends StatefulWidget {
   State<App4> createState() => _App4State();
 }
 
+// The set state function would call the entire Widget build (below) to recreate the whole widget tree
+// This can be avoided by using Model methods shown here to rebuild only a subtree of the widget tree using the smaller builder function inside the Widget build
+
+
+
 class _App4State extends State<App4> {
   final CounterModel _counter = CounterModel();
 
@@ -21,11 +26,14 @@ class _App4State extends State<App4> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // A `ListenableBuilder` is paired with a `Listenable` object 
+        // A `ListenableBuilder`(a type of builder) is paired with a `Listenable` object 
         // (like a `ChangeNotifier`) and rebuilds its subtree whenever 
         // the `Listenable` sends notification of a change
+        // this is like "call me" if your value changes
+        // this builder can be called anytime the _counter changed
         ListenableBuilder(
           listenable: _counter, 
+          // child: const Text() - we can send a child of the subtree to be constant as an arguement below so that it need not be recreated/rebuilt 
           builder: (BuildContext context, Widget? child) {
             return Text('Counter: ${_counter.count}');
           }
@@ -45,6 +53,8 @@ class _App4State extends State<App4> {
 class CounterModel with ChangeNotifier {
   int _count = 0;
   int get count => _count;
+  // we use a get method so that it can be used as a instance callable variable
+  // there is no setter method, as we dont want to manipulate the count exernally, we use the increment method to update it as part of our logic
 
   void increment(int inc) {
     _count += inc;
