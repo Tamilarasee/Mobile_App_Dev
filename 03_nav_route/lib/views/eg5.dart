@@ -24,13 +24,14 @@ class App5 extends StatelessWidget {
 
 class AlltheThings extends StatefulWidget {
   const AlltheThings({super.key});
-
+//  this is stateful because we have a menu drawer
   @override
   State<AlltheThings> createState() => _AlltheThingsState();
 }
 
 class _AlltheThingsState extends State<AlltheThings> {
   int _selectedIndex = 0;
+  // default to home(0)
 
   void _changeSelection(int index) {
     setState(() {
@@ -49,6 +50,7 @@ class _AlltheThingsState extends State<AlltheThings> {
           changeSelection: _changeSelection
         ),
         body: switch (_selectedIndex) {
+          // based on menu selected from drawer
           0 => TabbedPage(),
           1 => const MacGuffinsListPage(),
           _ => const SettingsPage(),
@@ -78,7 +80,7 @@ class MyDrawer extends StatelessWidget {
             child: Text(
               "Menu",
               textAlign: TextAlign.justify,
-              textScaleFactor: 2.0,
+              // textScaleFactor: 2.0,
             ),
           ),
           ListTile(

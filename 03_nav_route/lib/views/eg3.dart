@@ -13,7 +13,7 @@ class App3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'App 2',
+      title: 'App 3',
       home: MacGuffinsListPage(50),
     );
   }
@@ -35,7 +35,9 @@ class _MacGuffinsListPageState extends State<MacGuffinsListPage> {
   @override
   void initState() {
     super.initState();
-
+    // Called when this object is inserted into the tree.(after the widget, its elements and its state object are created)
+    // The framework will call this method exactly once for each [State] object it creates.
+    // It is different from constructor because constructor will be called to create the object but this one already kind of happens after the widget is initialized
     // In a real app, this data would be fetched from a database or API
     data = List.generate(widget.numMacGuffins,
       (index) => MacGuffin(name: 'MacGuffin ${index + 1}')
@@ -46,6 +48,7 @@ class _MacGuffinsListPageState extends State<MacGuffinsListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('MacGuffins')),
+      // create a list of tiles based on the length(no.) of the macguffins
       body: ListView.builder(
         itemCount: data.length, 
         itemBuilder: (context, index) {
@@ -53,6 +56,7 @@ class _MacGuffinsListPageState extends State<MacGuffinsListPage> {
             title: Text(data[index].name),
             onTap: () {
               _editMacGuffin(context, index);
+              // On tap, push a new page passing the appropriate index along which is used to retrieve the macguffin model and display the values
             },
           );
         }
@@ -77,8 +81,12 @@ class _MacGuffinsListPageState extends State<MacGuffinsListPage> {
     if (!mounted) return;
 
     // Check that the result isn't null and is different from the original
+    // Result could be null when we simply click on "back" button and 
+    // the second condition is used to save the effort of redrawing the same thing, if no actual changes made, no need to update
     if (result != null && result != data[index]) {
       // Update the model data & rebuild the widget
+      // this redraws the list tiles which are currently visible on the screen
+      // So, though we change 1 tile, the list of tiles on screen(say 10 of the 50) will be redrawn
       setState(() {
         data[index] = result;
       });
@@ -102,7 +110,7 @@ class _MacGuffinEditPageState extends State<MacGuffinEditPage> {
   @override
   void initState() {
     super.initState();
-    // make a copy of the MacGuffin for editing
+    // make a copy of the MacGuffin for editing using the copy constructor function from the datamodel
     editedMacGuffin = MacGuffin.from(widget.macguffin);
   }
 
@@ -118,8 +126,12 @@ class _MacGuffinEditPageState extends State<MacGuffinEditPage> {
               padding: const EdgeInsets.all(24.0),
               child: TextFormField(
                 initialValue: editedMacGuffin.name,
+                // whatever name stored previously will be visible
                 decoration: const InputDecoration(hintText: 'Name'),
+                // when you delete existing and  nothing is typed , show by default 'Name'
                 onChanged: (value) => editedMacGuffin.name = value,
+                // when we change the value it get stored only to the edited copy, because we havent saved it yet,
+                // only when saved buttin is clicked it is confirmed to be a valid data
               ),
             ),
             Padding(
@@ -136,6 +148,7 @@ class _MacGuffinEditPageState extends State<MacGuffinEditPage> {
                 // Pop the current screen off the navigation stack, and pass
                 // the new name back to the previous screen
                 Navigator.of(context).pop(editedMacGuffin);
+                // Now the edited value is sent to the first page
               },
             ),
           ],

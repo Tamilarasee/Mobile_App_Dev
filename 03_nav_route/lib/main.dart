@@ -6,6 +6,10 @@ import 'views/eg3.dart';
 import 'views/eg4.dart';
 import 'views/eg5.dart';
 
+// Navigation between pages
+// It ideally happens like pushng the new pages on top of the stack and then returning to previous stack by poping the top one out
+// so that the old is visible (back button in browsers/app)
+
 void main() {
   runApp(const MainApp());
 }
@@ -15,6 +19,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return App1();
+    return App5();
   }
 }

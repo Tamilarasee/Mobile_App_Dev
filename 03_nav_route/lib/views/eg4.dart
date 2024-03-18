@@ -4,6 +4,12 @@
  * - Simplifying state management using the `provider` package
  */
 
+// This has a more sophiticated way of handling the communication b/w 2 pages, there is no direct comm/, 
+// we use a datamodel with changenotifier which notifies the changes instead of sending a future object a sresult while popping
+// So, no async method needed here
+// refer diagrams for more clarity
+
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/macguffin.dart';
@@ -73,6 +79,8 @@ class MacGuffinsListPage extends StatelessWidget {
                       // we also use a different constructor to pass the
                       // existing collection (rather than creating a new one)
                       return ChangeNotifierProvider<MacGuffinCollection>.value(
+                        // .value: This is a constructor of ChangeNotifierProvider that directly provides a value 
+                        // instead of creating a new instance of the provided class.
                         value: collection, 
 
                         // new route inherits the collection, so we don't have
@@ -107,6 +115,7 @@ class _MacGuffinEditPageState extends State<MacGuffinEditPage> {
   void initState() {
     super.initState();
     // grab the collection and the MacGuffin we're editing from the context
+    // the below line is used to create an instance and keep instead of accessing the orginal everytime
     _collection = Provider.of<MacGuffinCollection>(context, listen: false);
 
     // make a copy of the one we're editing so we can cancel/commit changes
