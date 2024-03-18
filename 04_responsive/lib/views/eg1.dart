@@ -13,7 +13,7 @@
 // the child fills the available space.
 // 
 // Flexible: ... unlike Expanded, Flexible does not require the child to fill
-// the available space.
+// the available space.,takes space only for how much is needed with the maximum being the flex factor set.
 
 
 import 'package:flutter/material.dart';
@@ -22,6 +22,11 @@ class App1 extends StatelessWidget {
   // try change the following two properties
   final Axis direction       = Axis.vertical;
   final List<int> flexValues = const [1, 1, 2];
+
+// getter dynamically determines the direction in which child widgets should be laid out based on the value 
+// of the direction variable. If direction is Axis.horizontal, it returns Axis.vertical; 
+// otherwise, it returns Axis.horizontal.
+// using these directions instead of the standard row/columns in this app
 
   get childDirection => direction == Axis.horizontal 
                         ? Axis.vertical 

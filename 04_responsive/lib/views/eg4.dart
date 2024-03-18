@@ -26,6 +26,8 @@ class _App4State extends State<App4> {
     var size = MediaQuery.sizeOf(context);
 
     // only show the app bar and drawer if the screen is small
+    // there is a edge case error  in this code-as we dont say what to do if width == 600
+    
     var appBar = size.width < 600
         ? AppBar(
             title: Text(_menuItems[_selectedIndex]),

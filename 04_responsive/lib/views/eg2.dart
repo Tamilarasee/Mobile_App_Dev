@@ -76,6 +76,8 @@ class Menu extends StatelessWidget {
             selected: items.indexOf(item) == selectedIndex,
             onTap: () {
               if (onChange != null) onChange!(items.indexOf(item));
+              // when a user taps on an item, the index of that item in the items list is passed to the onChange callback. 
+              // This allows the parent widget to know which item is selected or tapped.
             },
           );
         },

@@ -15,6 +15,8 @@ class App3 extends StatelessWidget {
     // rebuild this widget whenever any of the MediaQuery properties change.
     // It is more efficient to access specific MediaQuery properties through
     // methods like `sizeOf` and `orientationOf`.
+    // Mediaquery automatically notifies the widget to redraw when there is a change  - without explicit listners
+    
     var mq = MediaQuery.of(context);
 
     // Device and platform data
