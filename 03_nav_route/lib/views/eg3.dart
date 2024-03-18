@@ -39,6 +39,10 @@ class _MacGuffinsListPageState extends State<MacGuffinsListPage> {
     // The framework will call this method exactly once for each [State] object it creates.
     // It is different from constructor because constructor will be called to create the object but this one already kind of happens after the widget is initialized
     // In a real app, this data would be fetched from a database or API
+
+// It's called when the stateful widget is inserted into the widget tree for the first time. This method is typically used for one-time initialization tasks,
+// such as initializing variables, setting up listeners, or fetching data from external sources.
+
     data = List.generate(widget.numMacGuffins,
       (index) => MacGuffin(name: 'MacGuffin ${index + 1}')
     );
