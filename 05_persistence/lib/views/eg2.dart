@@ -1,4 +1,6 @@
 /// Demonstrates how to save and load data to/from a file.
+// there are some default directories for each platform that are prewrittten, which are refferedd by the os
+// we create a text file in that directory and write our inputs there and retrieve data from there
 
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -59,6 +61,9 @@ class _FilePersistenceDemoState extends State<FilePersistenceDemo> {
     final text = await file.readAsString(); // reads entire file as a string
 
     // let's pretend this takes a while ...
+    // this is to see that what happens if the OS is slow to get data and how UI shows up/behaves meantime
+    //  our UI responsive until then but after the result is available it goes back to the data it fetched
+    
     await Future.delayed(const Duration(seconds: 1));
 
     _controller.text = text;
