@@ -27,6 +27,8 @@ class DBHelper {
   Future<Database> _initDatabase() async {
     // use path_provider to get the platform-dependent documents directory
     var dbDir = await getApplicationDocumentsDirectory();
+  //flutter uses a default path based on the platform to store the database files..
+  //we get that path from above function and add our db name to the path to point to the db
 
     // path.join joins two paths together, and is platform aware
     var dbPath = path.join(dbDir.path, _databaseName);

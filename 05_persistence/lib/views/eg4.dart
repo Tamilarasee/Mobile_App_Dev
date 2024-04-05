@@ -21,6 +21,9 @@ class Person {
   });
 
   // know how to load ourself from JSON
+  // A factory method is a design pattern used in object-oriented programming that provides a way
+  // to create objects without exposing the creation logic to the client. In other words, 
+  //instead of using a constructor directly to create objects, you use a factory method which encapsulates the object creation process.
   factory Person.fromJson(Map<String,dynamic> json) {
     return Person(
       name: json['name'] as String,

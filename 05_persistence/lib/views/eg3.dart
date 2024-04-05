@@ -66,6 +66,7 @@ class _JSONAssetDemoState extends State<JSONAssetDemo> {
           return Scaffold(
             body: ListView.builder(
               // `snapshot.data` is the data returned by the future
+              // ! exclamation is used to ascertain that it is not null
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final key = snapshot.data!.keys.elementAt(index);

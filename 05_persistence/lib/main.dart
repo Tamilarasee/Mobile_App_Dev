@@ -7,5 +7,5 @@ import 'views/eg4.dart';
 import 'views/eg5.dart';
 
 void main() {
-  runApp(const App2());
+  runApp(const App5());
 }
