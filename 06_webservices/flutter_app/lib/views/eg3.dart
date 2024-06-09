@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:word_generator/word_generator.dart';
 import '../utils/sessionmanager.dart';
 
+const localhost = '192.168.0.250';
 
 class App3 extends StatefulWidget {
   const App3({super.key});
@@ -104,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final username = usernameController.text;
     final password = passwordController.text;
 
-    final url = Uri.parse('http://localhost:5001/login');
+    final url = Uri.parse('http://$localhost:5001/login');
     final response = await http.post(url, 
       headers: {
         'Content-Type': 'application/json', 
@@ -144,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final username = usernameController.text;
     final password = passwordController.text;
 
-    final url = Uri.parse('http://localhost:5001/register');
+    final url = Uri.parse('http://$localhost:5001/register');
     final response = await http.post(url, 
       headers: {
         'Content-Type': 'application/json', 
@@ -184,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 /// Very similar to main screen in eg2.dart, but with authentication.
 class HomeScreen extends StatefulWidget {
-  final String baseUrl = 'http://localhost:5001/posts';
+  final String baseUrl = 'http://$localhost:5001/posts';
 
   const HomeScreen({super.key});
 

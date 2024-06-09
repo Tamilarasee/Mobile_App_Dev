@@ -13,7 +13,9 @@ import json
 from datetime import timedelta
 
 
+from flask_cors import CORS 
 app = Flask(__name__)
+CORS(app)
 
 
 # Bcrypt configuration

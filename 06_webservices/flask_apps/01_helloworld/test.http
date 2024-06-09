@@ -1,3 +1,14 @@
+# Enable Rest client extension to get the "send request" button
+# This is a regular http file with format "Method URL" follwed by data if any as secondary info
+# Rest client works on the http protocol to help us with the communciation to the server (in our case-the python app is the server)
+
+# We can follow the link and get the updates on webpage as well
+
+# Notice in the terminal , when we send request we get IP address as client - which 127.0.0.1-->because the request is within the same device
+# the loopback address - 127
+
+
+
 GET http://localhost:5001/
 
 ###
@@ -10,3 +21,5 @@ PUT http://localhost:5001/cn
 Content-Type: text/utf-8
 
 bar
+
+

@@ -12,6 +12,8 @@ void main() {
 }
 
 // the top-level app, which uses a tab view to display the various demos
+// Animation is the transition from one keyframe to another
+
 class App extends StatefulWidget {
   const App({super.key});
 

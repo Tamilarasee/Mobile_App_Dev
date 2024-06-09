@@ -1,3 +1,9 @@
+
+# This is a http file which has requests that are sent to a web service given by fakestoreapi which in turn is connected to web server
+# In other examples, like the eg - 1 of main.dart, we are building the webservice itself using app.py(flask) 
+# This is just to demonstrate how http requests talk to web service
+
+
 GET https://fakestoreapi.com/products
 
 ###
@@ -34,3 +40,6 @@ Content-Type: application/json
     "username": "johnd",
     "password": "m38rmF$"
 }
+
+
+

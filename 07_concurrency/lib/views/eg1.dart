@@ -10,12 +10,17 @@ class App1 extends StatefulWidget {
 class _App1State extends State<App1> {
   int counter = 0;
 
+// No delay between copying the value and updating the value- - runnning loop twice -->2000 normal incrementation
   Future<void> incrementCounter1() async {
     for (int i = 0; i < 1000; i++) {
       counter++;
       await Future.delayed(Duration.zero);
     }
   }
+
+// Race condition - since we have kept the delay in between reading the value and updating the value
+//- >the output is only 1000 even when run twice-->bacuse the old value was copied by both counters each time and
+// it is one step behind every time and hence the result is 1000
 
 Future<void> incrementCounter2() async {
   for (int i = 0; i < 1000; i++) {

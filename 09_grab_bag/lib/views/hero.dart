@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// making an existing image in one page grow bigger into the second
+
 class HeroPage1 extends StatelessWidget {
   const HeroPage1({super.key});
 

@@ -10,6 +10,7 @@ class App3 extends StatefulWidget {
   State<App3> createState() => _App3State();
 }
 
+// isolation runs the comptaion in background and doesnt disturb this event loop and hence no delay in on screen UI updates
 // Only top-level or static functions can be invoked from an isolate
 Future<int> longComputation(int n) async {
   int sum = 0;

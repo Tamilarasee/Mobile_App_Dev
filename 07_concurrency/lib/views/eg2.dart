@@ -17,7 +17,10 @@ class _App2State extends State<App2> {
   @override
   void initState() {
     super.initState();
+
     // start a timer that increments the counter every second
+    // Timer schedules an event and after it is consumed, it schedules another event with appropriate delay.
+    
     timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       setState(() => counter++);
     });
@@ -29,13 +32,19 @@ class _App2State extends State<App2> {
     super.dispose();
   }
 
+  // sync delay - with callback
+  // async delay - use wait
+
+  // the dealys doesnt affect anything on screen, because it is smaller than the time between which 2 scheduled redraw events are
+  // SO, no effect on redrawing the screen
+
 
   // Use a timer-based delay to simulate a long-running task
   Future<void> longDelay(int n) async {
     await Future.delayed(Duration(seconds: n));
   }
 
-
+// Computation is too long that it affects the consective redraw events and hence there is a delay in the value updated for the counter
   // Perform a CPU-intensive computation
   Future<int> longComputation(int n) async {
     int sum = 0;

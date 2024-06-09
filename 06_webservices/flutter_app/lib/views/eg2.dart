@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:word_generator/word_generator.dart';
 
+const localhost = '192.168.0.250';
+
 class App2 extends StatelessWidget {
   const App2({super.key});
 
@@ -20,9 +22,10 @@ class App2 extends StatelessWidget {
   }
 }
 
+
 // Displays a list of posts from a web service.
 class MichaelsList extends StatefulWidget {
-  final String baseUrl = 'http://localhost:5001/posts';
+  final String baseUrl = 'http://$localhost:5001/posts';
 
   const MichaelsList({super.key});
 
@@ -42,6 +45,7 @@ class _MichaelsListState extends State<MichaelsList> {
   Future<List<dynamic>> _loadPosts() async {
     final response = await http.get(Uri.parse(widget.baseUrl));
     final posts = json.decode(response.body);
+    // take the string in the body and convert it to maps(json decode) and  save it in posts
     return posts;
   }
 
@@ -60,6 +64,7 @@ class _MichaelsListState extends State<MichaelsList> {
       // encode the data appropriately
       body: jsonEncode({
         // random post content
+        // This dart data structure(map) is conveted to json object for passing to http request
         'title': WordGenerator().randomNoun(),
         'description': WordGenerator().randomSentence(5),
         'author': WordGenerator().randomName(),
@@ -147,7 +152,7 @@ class _MichaelsListState extends State<MichaelsList> {
 
 // Allows the user to edit a post.
 class PostEditor extends StatefulWidget {
-  final String baseUrl = 'http://localhost:5001/posts';
+  final String baseUrl = 'http://$localhost:5001/posts';
   final Map<String, dynamic> post;
 
   const PostEditor({required this.post, super.key});

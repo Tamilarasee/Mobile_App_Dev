@@ -33,6 +33,7 @@ PageRouteBuilder _buildPageRoute() {
       const end = 1.0;
       const curve = Curves.easeInOut;
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      // Tween comes from the word inbetween - it frives the animation by interpolation
 
       var curvedAnimation = CurvedAnimation(
         parent: animation,
@@ -46,6 +47,8 @@ PageRouteBuilder _buildPageRoute() {
     },
   );
 }
+
+//  we can change the corrdinates to say from which corner the next page animates through the previous screen
 
 class Page2 extends StatelessWidget {
   const Page2({super.key});

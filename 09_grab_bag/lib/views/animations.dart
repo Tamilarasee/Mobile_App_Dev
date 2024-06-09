@@ -33,10 +33,12 @@ class _ImplicitAnimationsState extends State<ImplicitAnimations> {
                     height: _animToggle ? 100 : 50,
                     child: Image.asset('assets/images/scarlet-hawks.png'),
                   ),
-                  // animated container
+
+                  // animated container - animation occurs more gracefully than sudden changes
                   AnimatedContainer(
                     // animation duration
-                    duration: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 500), 
+                    // duration is the time for which the transition happens
                     // animation interpolation curve (try some others)
                     curve: Curves.ease,
                     width: _animToggle ? 100 : 50,
@@ -121,6 +123,7 @@ class _ImplicitAnimationsState extends State<ImplicitAnimations> {
                     duration: const Duration(milliseconds: 500),
                     transitionBuilder: (child, animation) {
                       return ScaleTransition(
+                        // custom animation
                         scale: animation,
                         child: child,
                       );

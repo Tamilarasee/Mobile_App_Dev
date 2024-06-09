@@ -2,8 +2,9 @@
 # which are maintained in memory.
 
 from flask import Flask, request, abort, jsonify
-
+from flask_cors import CORS 
 app = Flask(__name__)
+CORS(app)
 
 POSTS = {} # in-memory database of post_id -> Post
 NEXT_POST_ID = 10000 # used to generate unique post IDs

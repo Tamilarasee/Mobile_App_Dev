@@ -5,12 +5,14 @@
 // 
 // Note that HTTP requests won't work in Chrome/Edge because of CORS.
 // 
+//  here 192.168.0.250 is IPaddress of localhost.replaced it because while runnning in andriod emulator it takes the emulator as localhost 
+
 // For MacOS, add the following to macos/Runner/DebugProfile.entitlements:
 //  <key>com.apple.security.network.client</key><true/>
 
-import 'dart:convert';
+import 'dart:convert'; //used for converting types
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http; //needed for using http requests
 
 class App1 extends StatelessWidget {
   const App1({super.key});
@@ -27,7 +29,7 @@ class App1 extends StatelessWidget {
 
 // Displays "Hello World" messages from a web service.
 class Hello extends StatefulWidget {
-  final String url = 'http://localhost:5001/';
+  final String url = 'http://192.168.0.250:5001/';
   
   const Hello({super.key});
 
@@ -40,9 +42,14 @@ class _HelloState extends State<Hello> {
 
   Future<String> _fetchHello() async {
     final response = await http.get(Uri.parse(widget.url));
+    // url is a string which has to be parsed we send it as a request to http
+    // response contains the output of https with headers, body and status,etc..
     return response.body;
   }
 
+
+// init state is called as soon as we create a state object but before set a context for build
+//  so, use it only to create datastructures but nothing related to UI elements that are attached to context which is not created yet
   @override
   void initState() {
     super.initState();
@@ -58,6 +65,7 @@ class _HelloState extends State<Hello> {
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
+            // Rebuild when refreshed
             onPressed: () {
               setState(() {
                 hello = _fetchHello();
@@ -74,6 +82,8 @@ class _HelloState extends State<Hello> {
           ),
         ],
       ),
+
+      // Futute builder rebuilds the widget when the future object mentioned is changed
       body: FutureBuilder<String>(
         future: hello,
         builder: (context, snapshot) {
@@ -98,7 +108,7 @@ class _HelloState extends State<Hello> {
 
 // Allows the user to add "Hello World" messages to the web service.
 class HelloEditor extends StatefulWidget {
-  final String url = 'http://localhost:5001/';
+  final String url = 'http://192.168.0.250:5001/';
   
   const HelloEditor({super.key});
 
