@@ -1,0 +1,66 @@
+GET http://165.227.117.48/games
+Authorization: Bearer {{login.response.body.$.access_token}}
+
+
+###
+
+@username = Kavin
+@password = 123
+
+POST http://165.227.117.48/register
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+###
+
+# @name login
+POST http://165.227.117.48/login
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+###
+
+# @name createGame
+POST http://165.227.117.48/games
+Content-type: application/json
+Authorization: Bearer {{login.response.body.$.access_token}}
+
+{
+    "ships": ["B1", "A2", "D3", "C4", "E5"], 
+    "ai": "random"
+}
+
+###
+
+@gameId = 9133
+GET http://165.227.117.48/games/{{gameId}}
+Authorization: Bearer {{login.response.body.$.access_token}}
+
+
+
+###
+
+
+PUT http://165.227.117.48/games/{{gameId}}
+Content-type: application/json
+Authorization: Bearer {{login.response.body.$.access_token}}
+
+{
+    "shot": "B1"     
+}
+
+###
+
+
+DELETE http://165.227.117.48/games/{{gameId}}
+Authorization: Bearer {{login.response.body.$.access_token}}
+
+###
